@@ -47,7 +47,8 @@ Example:
 
       <input is="iron-input" id="input"
           validator="email-validator"
-          bind-value="{{value}}">
+          bind-value="{{value}}"
+          name$="[[name]]">
 
       <template is="dom-if" if="[[errorMessage]]">
         <paper-input-error id="error">[[errorMessage]]</paper-input-error>
