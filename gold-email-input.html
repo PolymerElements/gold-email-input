@@ -12,6 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../paper-input/paper-input-container.html">
 <link rel="import" href="../paper-input/paper-input-error.html">
 <link rel="import" href="../iron-input/iron-input.html">
+<link rel="import" href="../iron-form-element-behavior/iron-form-element-behavior.html">
 <link rel="import" href="email-validator.html">
 
 <!--
@@ -66,7 +67,8 @@ Example:
     is: 'gold-email-input',
 
     behaviors: [
-      Polymer.PaperInputBehavior
+      Polymer.PaperInputBehavior,
+      Polymer.IronFormElementBehavior
     ],
 
     properties: {
