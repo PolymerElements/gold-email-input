@@ -51,6 +51,7 @@ Example:
       <input is="iron-input" id="input"
           validator="email-validator"
           bind-value="{{value}}"
+          autocomplete$="[[autocomplete]]"
           name$="[[name]]">
 
       <template is="dom-if" if="[[errorMessage]]">
