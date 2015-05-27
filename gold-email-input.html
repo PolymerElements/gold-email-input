@@ -16,10 +16,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="email-validator.html">
 
 <!--
-`gold-email-input` is a Material Design field for entering a valid email.
-Example:
+`<gold-email-input>` is a single-line text field with Material Design styling
+for entering an email address.
 
     <gold-email-input></gold-email-input>
+
+It may include an optional label, which by default is "Email".
+
+    <gold-email-input label="your email address"></gold-email-input>
+
+### Validation
+
+The input can be automatically validated as the user is typing by using
+the `auto-validate` and `required` attributes. For manual validation, the
+element also has a `validate()` method, which returns the validity of the
+input as well sets any appropriate error messages and styles.
+
+See `Polymer.PaperInputBehavior` for more API docs.
+
+### Styling
+
+See `Polymer.PaperInputContainer` for a list of custom properties used to
+style this element.
 
 @group Gold Elements
 @hero hero.svg
