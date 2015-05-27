@@ -60,13 +60,13 @@ style this element.
         auto-validate="[[autoValidate]]"
         attr-for-value="bind-value">
 
-      <template is="dom-if" if="[[label]]">
-        <label>[[label]]</label>
-      </template>
+      <label hidden$="[[!label]]">[[label]]</label>
 
       <email-validator></email-validator>
 
       <input is="iron-input" id="input"
+          aria-labelledby$="[[_ariaLabelledBy]]"
+          aria-describedby$="[[_ariaDescribedBy]]"
           validator="email-validator"
           bind-value="{{value}}"
           autocomplete$="[[autocomplete]]"
