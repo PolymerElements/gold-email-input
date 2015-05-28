@@ -19,7 +19,7 @@
     "type": "git",
     "url": "git://github.com/PolymerElements/gold-email-input.git"
   },
-  "license": "MIT",
+  "license": "http://polymer.github.io/LICENSE.txt",
   "homepage": "https://github.com/PolymerElements/gold-email-input",
   "ignore": [],
   "dependencies": {
