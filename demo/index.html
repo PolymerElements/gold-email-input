@@ -18,33 +18,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <title>gold-email-input demo</title>
 
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-
   <link rel="import" href="../gold-email-input.html">
 
-  <link rel="stylesheet" href="../../paper-styles/demo.css">
+  <link rel="stylesheet" href="../../paper-styles/paper-styles.html">
+  <link rel="import" href="../../paper-styles/demo-pages.html">
 
 </head>
-<style>
-  gold-email-input {
-    width: 200px;
-  }
-
-</style>
 <body>
-  <section>
-    <gold-email-input></gold-email-input>
-  </section>
+  <div class="vertical-section-container centered">
+    <h4>Standard</h4>
+    <div class="vertical-section">
+      <gold-email-input></gold-email-input>
+      <gold-email-input label="Auto-validating" auto-validate></gold-email-input>
+    </div>
 
-  <section>
-    <h4>Auto-validating input</h4>
-    <gold-email-input auto-validate></gold-email-input>
-    <br>
-    <gold-email-input auto-validate value="batman@gotham.org"></gold-email-input>
-    <br>
-    <gold-email-input auto-validate value="not-a-thing.email"></gold-email-input>
+    <h4>Pre-validated</h4>
+    <div class="vertical-section">
+      <gold-email-input auto-validate value="batman@gotham.org"></gold-email-input>
+      <gold-email-input auto-validate value="not-a-thing.email"></gold-email-input>
+    </div>
 
-    <h4>With custom error message</h4>
-    <gold-email-input required auto-validate error-message="Please enter a valid email" label="Email contact"></gold-email-input>
-  </section>
-
+    <h4>Custom error message</h4>
+    <div class="vertical-section">
+      <gold-email-input required auto-validate error-message="Please enter a valid email" label="Email contact"></gold-email-input>
+    </div>
+  </div>
 </body>
