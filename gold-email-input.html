@@ -56,7 +56,6 @@ style this element.
   <template>
 
     <paper-input-container id="container"
-        required$="[[required]]"
         auto-validate="[[autoValidate]]"
         attr-for-value="bind-value">
 
@@ -65,6 +64,7 @@ style this element.
       <email-validator></email-validator>
 
       <input is="iron-input" id="input"
+          required$="[[required]]"
           aria-labelledby$="[[_ariaLabelledBy]]"
           aria-describedby$="[[_ariaDescribedBy]]"
           validator="email-validator"
