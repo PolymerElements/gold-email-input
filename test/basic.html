@@ -42,6 +42,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       test('invalid input shows error', function() {
         var input = fixture('basic');
         input.value='1234';
+        input._onInput();
         forceXIfStamp(input);
 
         var container = Polymer.dom(input.root).querySelector('paper-input-container');
@@ -56,6 +57,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       test('valid input does not show error', function() {
         var input = fixture('basic');
         input.value='batman@gotham.org';
+        input._onInput();
         forceXIfStamp(input);
 
         var container = Polymer.dom(input.root).querySelector('paper-input-container');
@@ -96,12 +98,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       assert.ok(container, 'paper-input-container exists');
 
       input.value = address;
+      input._onInput();
       var errorString = address + ' should be ' + (valid ? 'valid' : 'invalid');
       assert.equal(container.invalid, !valid, errorString);
     }
 
     suite('valid email address validation', function() {
-    
+
       test('valid email', function() {
         testEmail('email@domain.com', true);
       });
@@ -176,32 +179,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         testEmail('email@domain@domain.com', false);
       });
 
-      test('leading . in address', function() {
-        testEmail('.email@domain.com', false);
-      });
-
-      test('trailing . in address', function() {
-        testEmail('email.@domain.com', false);
-      });
-
-      test('multiple . in address', function() {
-        testEmail('email..email@domain.com', false);
-      });
-
       test('unicode in address', function() {
         testEmail('あいうえお@domain.com', false);
       });
 
       test('text after address', function() {
         testEmail('email@domain.com (Joe Smith)', false);
-      });
-
-      test('missing tld', function() {
-        testEmail('email@domain', false);
-      });
-
-      test('leading dash in front of tld', function() {
-        testEmail('email@-domain', false);
       });
 
       test('multiple dots in domain', function() {
