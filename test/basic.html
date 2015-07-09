@@ -191,6 +191,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         testEmail('email@domain..com', false);
       });
 
+      test('tld with single letter', function() {
+        testEmail('email@domain.c', false);
+      });
+
     });
 
   </script>
