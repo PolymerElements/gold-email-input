@@ -108,12 +108,13 @@ style this element.
 
       /**
        * The regular expression used to validate the email. Defaults to the
-       * regular expression defined in the spec: http://www.w3.org/TR/html-markup/input.email.html#input.email.attrs.value.single.
+       * regular expression defined in the spec: http://www.w3.org/TR/html-markup/input.email.html#input.email.attrs.value.single
+       * excepted it rejects the email addresses with a TLD of single letter.
        * If left blank, then no validation will be applied.
        */
       regex: {
         type: String,
-        value: '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$'
+        value: '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*\\.[a-zA-Z0-9-]{2,}$'
       }
     },
 
