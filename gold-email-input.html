@@ -117,15 +117,15 @@ style this element.
       }
     },
 
-    listeners: {
-      'input': '_onInput'
-    },
+    observers: [
+      '_onValueChanged(value)'
+    ],
 
     ready: function() {
-      this._onInput();
+      this._onValueChanged();
     },
 
-    _onInput: function() {
+    _onValueChanged: function() {
       if (this.autoValidate) {
         this.validate();
       }
@@ -133,20 +133,20 @@ style this element.
 
     validate: function() {
       // Empty, non-required input is valid. A blank regex means everything is valid.
-      if ((!this.required && this.value == '') || this.regex == '') {
-        return true;
+      var valid = ((!this.required && this.value == '') || this.regex == '') ? true : new RegExp(this.regex, "i").test(this.value);
+
+      // Check if validity has changed
+      if (valid == this.invalid) {
+        // Update `invalid` since it's binded to the container
+        this.invalid = !valid;
+
+        // Update the container and its addons (i.e. the custom error-message).
+        this.$.container.updateAddons({
+          inputElement: this.$.input,
+          value: this.value,
+          invalid: !valid
+        });
       }
-
-      // A blank regex mean everything is allowed.
-      var valid = new RegExp(this.regex, "i").test(this.value);
-
-      // Update the container and its addons (i.e. the custom error-message).
-      this.$.container.invalid = !valid;
-      this.$.container.updateAddons({
-        inputElement: this.$.input,
-        value: this.value,
-        invalid: !valid
-      });
 
       return valid;
     },
