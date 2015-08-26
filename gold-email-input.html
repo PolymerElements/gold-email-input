@@ -149,21 +149,22 @@ style this element.
      * @return {boolean} Whether the input is currently valid or not.
      */
     validate: function() {
-      // Empty, non-required input is valid. A blank regex means everything is valid.
-      if ((!this.required && this.value == '') || this.regex == '') {
-        return true;
+      // Empty, non-required input is valid. A blank regex means everything is valid. Else, check value against regex.
+      var valid = ((!this.required && this.value == '') || this.regex == '') ? true : new RegExp(this.regex, "i").test(this.value);
+
+      // Check if validity has changed
+      if (valid == this.invalid) {
+
+        // Update `this.invalid` since it's data-bound to container
+        this.invalid = !valid;
+
+        // Update container's addons (i.e. the custom error-message).
+        this.$.container.updateAddons({
+          inputElement: this.$.input,
+          value: this.value,
+          invalid: !valid
+        });
       }
-
-      // A blank regex mean everything is allowed.
-      var valid = new RegExp(this.regex, "i").test(this.value);
-
-      // Update the container and its addons (i.e. the custom error-message).
-      this.$.container.invalid = !valid;
-      this.$.container.updateAddons({
-        inputElement: this.$.input,
-        value: this.value,
-        invalid: !valid
-      });
 
       return valid;
     },
