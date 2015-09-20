@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <!--
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
@@ -34,6 +34,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <test-fixture id="basic">
     <template>
       <gold-email-input auto-validate required error-message="error"></gold-email-input>
+    </template>
+  </test-fixture>
+
+  <test-fixture id="input-type-no-form">
+    <template>
+      <gold-email-input></gold-email-input>
+    </template>
+  </test-fixture>
+
+  <test-fixture id="input-type-with-form-novalidate-not-set">
+    <template>
+      <form>
+        <gold-email-input></gold-email-input>
+      </form>
+    </template>
+  </test-fixture>
+
+  <test-fixture id="input-type-with-form-novalidate-set">
+    <template>
+      <form novalidate>
+        <gold-email-input></gold-email-input>
+      </form>
     </template>
   </test-fixture>
 
@@ -200,6 +222,42 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     });
 
+    suite('input-type', function () {
+
+      test('when has no form, type set to null', function (done) {
+
+        var element = fixture('input-type-no-form');
+        forceXIfStamp(element);
+
+        var input = Polymer.dom(element.root).querySelector('input');
+        assert.equal(null, input.getAttribute('type'));
+
+        done();
+      });
+
+      test('when has form, but novalidate is not set, type set to null', function (done) {
+
+        var element = fixture('input-type-with-form-novalidate-not-set');
+        forceXIfStamp(element);
+
+        var input = element.querySelector('input');
+        assert.equal(null, input.getAttribute('type'));
+
+        done();
+      });
+
+      test('when has form, novalidate is set, type set to "email"', function (done) {
+
+        var element = fixture('input-type-with-form-novalidate-set');
+        forceXIfStamp(element);
+
+        var input = element.querySelector('input');
+        assert.equal('email', input.getAttribute('type'));
+
+        done();
+      });
+
+    });
   </script>
 
 </body>
