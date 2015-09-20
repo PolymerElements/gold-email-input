@@ -62,21 +62,22 @@ style this element.
       <label hidden$="[[!label]]">[[label]]</label>
 
       <input is="iron-input" id="input"
-          required$="[[required]]"
-          disabled$="[[disabled]]"
-          aria-labelledby$="[[_ariaLabelledBy]]"
-          aria-describedby$="[[_ariaDescribedBy]]"
-          validator="email-validator"
-          bind-value="{{value}}"
-          autocomplete="email"
-          autocapitalize="none"
-          name$="[[name]]"
-          invalid="{{invalid}}"
-          autofocus$="[[autofocus]]"
-          inputmode$="[[inputmode]]"
-          placeholder$="[[placeholder]]"
-          readonly$="[[readonly]]"
-          size$="[[size]]">
+        type="[[type]]"
+        required$="[[required]]"
+        disabled$="[[disabled]]"
+        aria-labelledby$="[[_ariaLabelledBy]]"
+        aria-describedby$="[[_ariaDescribedBy]]"
+        validator="email-validator"
+        bind-value="{{value}}"
+        autocomplete="email"
+        autocapitalize="none"
+        name$="[[name]]"
+        invalid="{{invalid}}"
+        autofocus$="[[autofocus]]"
+        inputmode$="[[inputmode]]"
+        placeholder$="[[placeholder]]"
+        readonly$="[[readonly]]"
+        size$="[[size]]">
 
       <template is="dom-if" if="[[errorMessage]]">
         <paper-input-error id="error">[[errorMessage]]</paper-input-error>
@@ -126,7 +127,16 @@ style this element.
       '_onFocusedChanged(focused)'
     ],
 
-    ready: function() {
+    attached: function () {
+
+      var form = this._getForm();
+      if (form != null
+            && form.hasAttribute('novalidate')) {
+        this.type = 'email';
+      }
+    },
+
+    ready: function () {
       // If there's an initial input, validate it.
       if (this.value)
         this._handleAutoValidate();
@@ -176,6 +186,18 @@ style this element.
     _onFocusedChanged: function(focused) {
       if (!focused) {
         this._handleAutoValidate();
+      }
+    },
+
+    /**
+     * Finds the form associated with the input element up the tree
+     **/
+    _getForm: function () {
+
+      if (this.form) return this.form;
+      var parent = this;
+      while (parent = parent.parentElement) {
+        if (parent.tagName.toUpperCase() === 'FORM') return parent;
       }
     }
   })
