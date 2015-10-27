@@ -11,9 +11,7 @@
     "gold",
     "input"
   ],
-  "main": [
-    "gold-email-input.html"
-  ],
+  "main": "gold-email-input.html",
   "private": true,
   "repository": {
     "type": "git",
