@@ -1,6 +1,6 @@
 {
   "name": "gold-email-input",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "An email input field",
   "authors": [
     "The Polymer Authors"
@@ -25,7 +25,7 @@
     "iron-icon": "PolymerElements/iron-icon#^1.0.0",
     "paper-input": "PolymerElements/paper-input#^1.0.0",
     "paper-styles": "PolymerElements/paper-styles#^1.0.0",
-    "polymer": "Polymer/polymer#^1.0.0"
+    "polymer": "Polymer/polymer#^1.1.0"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
