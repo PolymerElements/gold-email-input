@@ -131,8 +131,10 @@ style this element.
 
       ready: function() {
         // If there's an initial input, validate it.
-        if (this.value)
+        if (this.value) {
+          this.value.trim();
           this._handleAutoValidate();
+        }
       },
 
       /**
@@ -143,6 +145,7 @@ style this element.
         if (oldValue == undefined)
           return;
 
+        this.value.trim();
         this._handleAutoValidate();
       },
 
