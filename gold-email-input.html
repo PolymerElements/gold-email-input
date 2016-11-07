@@ -52,6 +52,11 @@ style this element.
     :host {
       display: block;
     }
+
+    :host([hidden]) {
+      display: none !important;
+    }
+
     </style>
 
     <paper-input-container id="container"
