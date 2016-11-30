@@ -165,6 +165,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       test('dot in tld', function() {
         testEmail('basic', 'email@domain.co.jp', true);
       });
+
+      test('email with spaces', function() {
+        testEmail('basic', '  email@domain.co.jp  ', true);
+      });
     });
 
     suite('invalid email address validation', function() {
