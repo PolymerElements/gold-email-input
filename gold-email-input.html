@@ -75,7 +75,7 @@ style this element.
           aria-describedby$="[[_ariaDescribedBy]]"
           validator="email-validator"
           bind-value="{{value}}"
-          autocomplete="email"
+          autocomplete$="[[autocomplete]]"
           autocapitalize="none"
           minlength$="[[minlength]]"
           maxlength$="[[maxlength]]"
@@ -129,7 +129,12 @@ style this element.
         value: {
           type: String,
           observer: '_onValueChanged'
-        }
+        },
+          
+        autocomplete: {
+          type: String,
+          value: 'email'
+        },
       },
 
       observers: [
