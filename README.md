@@ -16,8 +16,10 @@ thing! https://github.com/PolymerLabs/tedium/issues
 
 _[Demo and API docs](https://elements.polymer-project.org/elements/gold-email-input)_
 
+⚠️ This element is now deprecated ⚠️
+This element will not be upgraded to Polymer 2.0. We recommend you use [`paper-input`](https://github.com/PolymerElements/paper-input) with [`type="email"`](https://www.webcomponents.org/element/PolymerElements/paper-input/elements/paper-input#property-type).
 
-##&lt;gold-email-input&gt;
+## &lt;gold-email-input&gt;
 
 `<gold-email-input>` is a single-line text field with Material Design styling
 for entering an email address.
